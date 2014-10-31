@@ -101,7 +101,7 @@ We can make a difference in their lives, for a better world.</p>
 				if(srollPos < showPoint) {
 					if($topBtn.css('display') != 'none') {
 						$topBtn.fadeOut();
-						$topBtn.css('display') = 'none';
+						$topBtn.css('display','none');
 					}
 				}
 				else
