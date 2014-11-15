@@ -157,7 +157,7 @@ public class CMSSiteFilter extends OncePerRequestFilter implements CMSFilter
 		if (cmsSiteModel == null || StringUtils.contains(queryString, CLEAR_CMSSITE_PARAM))
 		{
 			final String absoluteURL = StringUtils.removeEnd(currentRequestURL, "/")
-					+ (StringUtils.isBlank(queryString) ? "" : "?" + queryString);
+					+ (StringUtils.isBlank(queryString) ? "?site=apparel-uk&clear=true" : "?" + queryString);
 
 			cmsSiteModel = getContextInformationLoader().initializeSiteFromRequest(absoluteURL);
 		}
