@@ -25,7 +25,7 @@
 					<cms:pageSlot position="SiteLogo" var="logo" limit="1">
 						<%-- <cms:component component="${logo}" class="siteLogo"  element="div"/> --%>
 						<div class="logo pull-left">
-							<a href="<c:url value="/Categories/c/categories?q=:relevance"/>"><img
+							<a href="<c:url value="/Categories/c/categories"/>"><img
 								src="${commonResourcePath}/../ffac/images/logo.png" alt=""></a>
 						</div>
 					</cms:pageSlot>
@@ -64,9 +64,9 @@
 			<a href="#scrVision" class="btn-sap-care">SAP cares</a>
 			</c:if>
 			<c:if test="${ cmsPageRequestContextData.page.uid ne 'productGrid' }">
-			<a href="<c:url value="/Categories/c/categories?q=:relevance#headAnchor"/>" class="btn-buy-gift">buy a gift</a>
-			<a href="<c:url value="/Categories/c/categories?q=:relevance#ourStory"/>" class="btn-out-story">our story...</a>
-			<a href="<c:url value="/Categories/c/categories?q=:relevance#scrVision"/>" class="btn-sap-care">SAP cares</a>
+			<a href="<c:url value="/Categories/c/categories#headAnchor"/>" class="btn-buy-gift">buy a gift</a>
+			<a href="<c:url value="/Categories/c/categories#ourStory"/>" class="btn-out-story">our story...</a>
+			<a href="<c:url value="/Categories/c/categories#scrVision"/>" class="btn-sap-care">SAP cares</a>
 			</c:if>
 			
 			<p>Buy a gift and help transform someone's life</p>

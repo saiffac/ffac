@@ -9,7 +9,7 @@
  * Information and shall use it only in accordance with the terms of the
  * license agreement you entered into with hybris.
  *
- *  
+ *
  */
 package com.sai.ffac.storefront.security.cookie;
 
@@ -79,8 +79,7 @@ public class EnhancedCookieGenerator extends CookieGenerator
 					// Custom code to write the cookie including the httpOnly flag
 					final StringBuffer headerBuffer = new StringBuffer(100);
 					ServerCookie.appendCookieValue(headerBuffer, cookie.getVersion(), cookie.getName(), cookie.getValue(),
-							cookie.getPath(), cookie.getDomain(), cookie.getComment(), cookie.getMaxAge(), cookie.getSecure(),
-							true);
+							cookie.getPath(), cookie.getDomain(), cookie.getComment(), cookie.getMaxAge(), cookie.getSecure(), true);
 					response.addHeader(HEADER_COOKIE, headerBuffer.toString());
 				}
 				else
@@ -100,8 +99,41 @@ public class EnhancedCookieGenerator extends CookieGenerator
 	{
 		if (!canUseDefaultPath())
 		{
-			final HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
-			cookie.setPath(request.getContextPath());
+			final HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes())
+					.getRequest();
+			final String contextPath = nomalizeCxPath(request.getContextPath());
+			cookie.setPath(contextPath);
+			//			cookie.setPath(request.getContextPath());
 		}
+	}
+
+	/**
+	 * @param contextPath
+	 * @return
+	 */
+	private String nomalizeCxPath(final String contextPath)
+	{
+		String cxPath = contextPath;
+		if (!wellFormed(contextPath))
+		{
+			cxPath = "/";
+		}
+
+		return cxPath;
+	}
+
+	/**
+	 * @param contextPath
+	 * @return
+	 */
+	private boolean wellFormed(final String contextPath)
+	{
+		boolean isGoodForm = true;
+		if (contextPath == null || contextPath.isEmpty())
+		{
+			isGoodForm = false;
+		}
+
+		return isGoodForm;
 	}
 }
